@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const {db_string} = require('../config')
 
-mongoose.connect('mongodb+srv://Admin101:jagrat123@cluster0.ibywd.mongodb.net/simple-paytm');
+mongoose.connect(db_string);
 
 const schema1 = new mongoose.Schema({
     username : {
