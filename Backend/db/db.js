@@ -24,7 +24,7 @@ const schema1 = new mongoose.Schema({
         trim : true,
         maxlength : 50
     },
-    lastname : {
+    lastName : {
         type : String ,
         required : true ,
         trim : true ,
