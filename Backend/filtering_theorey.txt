@@ -1,0 +1,27 @@
+Always send a response for every HTTP request, even if the client ignores it. This is a 
+fundamental part of how HTTP works.
+
+db.users.find({ name: /a/ })
+Matches any name containing "a" (anywhere in the string).
+Output: patrick, petra
+
+db.users.find({ name: /^pa/ })
+Matches any name starting with "pa".
+Output: patrick
+
+db.users.find({ name: /ro$/ })
+Matches any name ending with "ro".
+Output: pedro
+
+// Find users whose name contains the param
+User.find({ name: new RegExp(param, 'i') }) // 'i' for case-insensitive
+
+// Find users whose name starts with param
+User.find({ name: new RegExp('^' + param, 'i') })
+
+// Find users whose name ends with param
+User.find({ name: new RegExp(param + '$', 'i') })
+
+Use regex in your queries for flexible string matching.
+^ = starts with, $ = ends with, plain = contains.
+'i' option makes it case-insensitive.

@@ -13,6 +13,7 @@ const authMiddleware = (req , res ,next) =>{
         const actualToken = authHeader.slice(7 , len);
         const status = jwt.verify(actualToken , JWT_SECRET) ;
         req.username  = status.username ;
+        next()
     }
     
     catch(err){
@@ -29,3 +30,5 @@ const authMiddleware = (req , res ,next) =>{
     }
 
 }
+
+module.exports = authMiddleware
