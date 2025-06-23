@@ -1,9 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken')
-const {z} = require('zod')
 const zod = require('zod')
 const router = express.Router();
 const {User} = require('../db/db')
+const {Account} = require('../db/db')
 const {JWT_SECRET} = require('../config')
 const authMiddleware = require('../middlewares/middleware')
 
@@ -41,7 +41,12 @@ router.post('/signup' , async (req , res)=>{
         if(user){
             throw new Error ("User already exists")
         }
-        await User.create(body);
+        const newUser = await User.create(body);
+        const newUserId = newUser._id ;
+        await Account.create({
+            userId : newUserId ,
+            balance : Math.floor(Math.random()*10000)
+        })
         
         return res.status(200).json({
             message : "User created successfully"

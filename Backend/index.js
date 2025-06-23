@@ -9,7 +9,6 @@ app.use(bodyParser.json())
 
 app.use('/api/v1' , rootRouter) ;
 
-
 const PORT  = 3000
 
 app.listen(PORT , (req , res)=>{

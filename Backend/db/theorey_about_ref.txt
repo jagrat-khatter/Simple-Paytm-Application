@@ -1,0 +1,29 @@
+
+1. Will userId be ObjectId of userSchema?
+Yes.
+
+userId is of type mongoose.Schema.Types.ObjectId and has ref: 'User'.
+This means it should store the _id value (which is an ObjectId) of a document from the User model 
+(created from schema1).
+
+2. In what conditions will it create an account?
+
+An account document will be created when you explicitly create it in your code 
+(e.g., with Account.create(...) or new Account(...)).
+
+********You must provide a valid userId (an existing user's _id) and a balance value.
+
+Example:
+const account = await Account.create({
+  userId: someUser._id, // _id from a User document
+  balance: 1000
+});
+
+3. Is ref: 'User' the model name or collection name?
+
+It is the model name as defined here:
+
+const User = mongoose.model('User', schema1);
+
+Mongoose uses the model name ('User') to know which collection to reference.
+By default, Mongoose will look for the collection named 'users' (lowercase, pluralized).

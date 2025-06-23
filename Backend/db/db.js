@@ -31,14 +31,26 @@ const schema1 = new mongoose.Schema({
         maxlength : 50
     }
 })
+const accountSchema = new mongoose.Schema({
+    userId :{
+        type : mongoose.Schema.Types.ObjectId,
+        ref :'User' ,
+        required : true
+    } ,
+    balance :{
+        type : Number ,
+        required : true
+    }
+})
 
 const User = mongoose.model('User' , schema1);
+const Account = mongoose.model('Account', accountSchema);
 
 module.exports ={
-    User
+    User  , Account
 }
 
-type: String
+// type: String
 // The field must be a string.
 
 // required: true
