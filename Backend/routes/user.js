@@ -34,7 +34,7 @@ router.post('/signup' , async (req , res)=>{
         const response = signupSchema.safeParse(body);
         
         if(! response.success){
-            throw new Error ("Zod verification failed ")
+            throw new Error ("Zod verification failed")
         }
         const username = body.username ;
         const user = await User.findOne({ username: username });
@@ -53,9 +53,14 @@ router.post('/signup' , async (req , res)=>{
         })
     }
     catch(err){
-        console.log(err) ;
-        return res.status(411).json({
-            message: "Email already taken / Incorrect inputs"
+        if(err.message === "Zod verification failed") return res.status(411).json({
+            message: "Incorrect inputs"
+        })
+        else if(err.message === "User already exists") return res.status(411).json({
+            message: "Email already taken"
+        })
+        else return res.status(411).json({
+            message: "Signup failed"
         })
     }
     
