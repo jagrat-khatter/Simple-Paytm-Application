@@ -130,7 +130,7 @@ router.get('/bulk' , async (req , res)=>{
             {firstName : new RegExp(param , 'i')} ,
             {lastName : new RegExp(param , 'i')}
         ]})
-
+        // i stands for case insensitive search
 
         
         return res.status(200).json({
