@@ -7,9 +7,9 @@ import axios from 'axios'
 export function Dashboard()
 {
     
-    return <div>
+    return <div className='bg-background-500 min-h-screen flex flex-col'>
         <Appbar />
-        <div className='m-8'>
+        <div className='m-8 flex-grow'>
             <Balance />
             <Users />
         </div>

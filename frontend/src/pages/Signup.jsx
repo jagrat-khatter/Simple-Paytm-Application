@@ -7,6 +7,8 @@ import {Button} from '../components/Button'
 import {BottomWarning} from '../components/BottomWarning'
 import {InputBox} from '../components/InputBox'
 
+
+
 export function Signup()
 {
     const [firstName , setFirstName] = useState(null);
@@ -26,7 +28,7 @@ export function Signup()
             <InputBox placeholder={"Jagrat"} onChange={(e)=>{setFirstName(e.target.value)}} label={"First Name"}/>
             <InputBox placeholder={"Khatter"} onChange={(e)=>{setLastName(e.target.value)}} label={"Last Name"}/>
             <InputBox placeholder={"khatterjagrat@gmail.com"} onChange={(e)=>{setUsername(e.target.value)}} label={"Email"}/>
-            <InputBox placeholder={"123456"} onChange={(e)=>{setPassword(e.target.value)}} label={"Last Name"}/>
+            <InputBox placeholder={"123456"} onChange={(e)=>{setPassword(e.target.value)}} label={"Password"}/>
             {message && <div className={`${messageClr} py-2`}>{message}</div>}
             <div className="pt-4">
                 <Button onClick={async () => {
